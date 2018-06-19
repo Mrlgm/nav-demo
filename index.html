@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="/js/main.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -36,22 +37,35 @@
         index = 0
         while(index<keys['length']){ // 0 1 2
             div1 = document.createElement('div')
+            div1.className = 'row'
             jianpan.appendChild(div1)
 
             row = keys[index]//三个数组
             index2 =0
             while(index2< row.length){
                 kbd1 = document.createElement('kbd')
-                kbd1.textContent = row[index2]
+                span = document.createElement('span')
+                span.textContent = row[index2]
+                span.className = 'text'
+                kbd1.appendChild(span)
+                kbd1.className = 'key'
                 button1 = document.createElement('button')
                 button1.textContent = '编辑'
                 button1.id = row[index2]
+                img1 = document.createElement('img')
+                if(hash[row[index2]]){
+                    img1.src = 'http://' + hash[row[index2]] + '/favicon.ico'    
+                }else{
+                    img1.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                }
+                
                 button1.onclick = function(event){
                     key = event.target.id
                     x = prompt('给我一个网址')
                     hash[key] = x //哈希变更
                     localStorage.setItem('web', JSON.stringify(hash))
                 }
+                kbd1.appendChild(img1)
                 kbd1.appendChild(button1)
                 div1.appendChild(kbd1)
                 index2 = index2 +1
@@ -69,7 +83,6 @@
             //location.href = 'http://' + website
             window.open('http://' + website, '_blank')
         }
-
     </script>
 </body>
 </html>
