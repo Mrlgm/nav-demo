@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/style.css">
     <script src="/js/main.js"></script>
-    <title>Document</title>
+    <title>我的导航</title>
 </head>
 <body>
     <header></header>
@@ -58,11 +58,22 @@
                 }else{
                     img1.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
                 }
+                img1.onerror = function(event){
+                    event.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+
+                }
                 
                 button1.onclick = function(event){
-                    key = event.target.id
+                    button2 = event.target
+                    img2 = button2.previousSibling
+                    key = button2.id
                     x = prompt('给我一个网址')
                     hash[key] = x //哈希变更
+                    img2.src = 'http://' + x + '/favicon.ico'
+                    img2.onerror = function(event){
+                    event.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+
+                }
                     localStorage.setItem('web', JSON.stringify(hash))
                 }
                 kbd1.appendChild(img1)
