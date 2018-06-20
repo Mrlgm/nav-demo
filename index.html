@@ -116,11 +116,13 @@
                 var img2 = button2.previousSibling
                 var key = button2.id
                 var x = prompt('给我一个网址')
-                hash[key] = x //哈希变更
+                if(x != null){
+                    hash[key] = x //哈希变更
                 img2.src = 'http://' + x + '/favicon.ico'
                 img2.onerror = function(event){
                 event.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
                 }
+                }                
             localStorage.setItem('web', JSON.stringify(hash))
             }
             return button1
